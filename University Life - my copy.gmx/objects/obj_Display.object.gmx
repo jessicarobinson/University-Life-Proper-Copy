@@ -74,7 +74,7 @@ weekday[6]="Sunday"; //all the above variables are of course for the time displa
           <argument>
             <kind>1</kind>
             <string>age++;
-if(age=timespeed){ //if the appropriate amount of time has passed
+if(age&gt;=timespeed){ //if the appropriate amount of time has passed
     age=0;
     minutes++; //minutes increase by 1
     event_user(0); //do all the things that should be done every minute
@@ -147,7 +147,15 @@ switch(obj_MainChar.state){
         var_sanity-=0.1; //wait, should sanity still decrease while sleeping? probably not.
         var_hunger-=0.1; //I guess hunger should continue to decrease though
         break;
+    case 2: //eating
+        if(var_hunger!=100){
+            var_hunger+=0.1;
+        }
+        var_sanity-=0.1;
+        var_energy-=0.1;
+        break;
 }
+if(var_sanity==0||var_energy==0||var_hunger==0){show_message("Oh noes!");game_end();}
 </string>
           </argument>
         </arguments>

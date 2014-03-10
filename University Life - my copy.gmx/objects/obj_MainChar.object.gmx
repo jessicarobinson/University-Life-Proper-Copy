@@ -29,7 +29,7 @@
 image_index=1; //facing the back. um, why did I do this?
 targetx=x; //your target is where you're currently standing - i.e. don't start moving just yet!
 targety=y;
-state=0; //0 = standard, 1 = sleeping
+state=0; //0 = standard, 1 = sleeping, 2 = eating
 </string>
           </argument>
         </arguments>
@@ -58,13 +58,12 @@ state=0; //0 = standard, 1 = sleeping
 else{
     speed=0; //stops
     image_index=0; //turns to face front
-    if(collision_rectangle(x-28,y-57,x+29,y,obj_Bed,false,true)&amp;&amp;state==0){ //if in bed but not sleeping
+    if(collision_rectangle(x-28,y-57,x+29,y,obj_Bed,false,true)&amp;&amp;state==0){ //if in bed and in normal state
         state=1; //sleeping
-        /*
-        really not sure why but the below line stops time completely at the moment,
-        so I've just commented it out for the time being
-        */
-        //obj_Display.timespeed=1; //time moves much more quickly!
+        obj_Display.timespeed=1; //time moves much more quickly!
+    }
+    if(collision_rectangle(x-28,y-57,x+29,y,obj_fridge,false,true)&amp;&amp;state==0){ //if at fridge and in normal state
+        state=2; //eating!
     }
 }
 </string>
@@ -91,7 +90,7 @@ else{
             <kind>1</kind>
             <string>targetx=mouse_x;
 targety=mouse_y; //target = wherever you clicked the mouse!
-sleeping=0; //wakes up if sleeping previously
+state=0; //returns to normal state from whatever she was doing previously
 obj_Display.timespeed=room_speed; //time returns to normal speed
 if(vspeed&gt;0){
     image_index=0; //moving downwards? face front

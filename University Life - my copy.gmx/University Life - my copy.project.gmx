@@ -9,6 +9,7 @@
     <sprite>sprites\spr_mainChar</sprite>
     <sprite>sprites\spr_Target</sprite>
     <sprite>sprites\spr_Bed</sprite>
+    <sprite>sprites\spr_fridge</sprite>
   </sprites>
   <backgrounds name="background"/>
   <paths name="paths"/>
@@ -16,6 +17,7 @@
     <object>objects\obj_MainChar</object>
     <object>objects\obj_Display</object>
     <object>objects\obj_Bed</object>
+    <object>objects\obj_fridge</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\LodgingsRoom</room>
